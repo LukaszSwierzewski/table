@@ -1,5 +1,5 @@
 const sortTable = (c) => {
-  var table, rows, switching, i, x, y, shouldSwitch;
+  let table, rows, switching, i, x, y, shouldSwitch;
   table = document.getElementById("dataTable");
   switching = true;
 

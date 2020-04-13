@@ -53,7 +53,7 @@ const cleanInput = () => {
   DOM.btnClean.addEventListener("click", () => {
     let input = (document.getElementById("search").value = "");
     document.querySelectorAll("a").forEach((e) => {
-      e.classList.remove("active");
+      e.parentNode.classList.remove("active");
     });
     search();
   });
