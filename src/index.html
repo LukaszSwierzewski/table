@@ -15,14 +15,25 @@
       <div class="dataSet">
         <div class="search__field">
           <input
-            placeholder="Press enter to search"
+            placeholder="Search by ID"
             class="searching"
-            id="search"
+            id="searchID"
             type="text"
           />
-        </div>
-        <div class="search__field">
-          <button id="clean">Show all</button>
+          <input
+            placeholder="Search by Name"
+            class="searching"
+            id="searchName"
+            type="text"
+          />
+          <input
+            placeholder="Search by City"
+            class="searching"
+            id="searchCity"
+            type="text"
+          />
+
+          <button id="clean">Clean filters</button>
         </div>
         <ul class="pagination">
           <li>
@@ -91,6 +102,9 @@
   </body>
 </html>
 <style>
+  body {
+    overflow-x: hidden;
+  }
   table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -172,14 +186,15 @@
   }
 
   .search__field {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     place-content: center;
+    grid-gap: 0px 10px;
   }
 
-  #search {
-    margin-top: 50px;
+  input {
     padding: 10px 20px;
-    width: 200px;
+
     border: 1px solid #333;
     text-align: center;
   }
@@ -189,13 +204,8 @@
   }
 
   #clean {
-    padding: 0px;
-    width: 240px;
-  }
-
-  #clean {
-    padding: 0.5rem 1.5rem;
-    margin-top: 1rem;
+    padding: 10px 20px;
+    margin: 0px;
     border: none;
     background: #333;
     border: 1px solid #333;
@@ -223,7 +233,7 @@
   }
 
   .container {
-    margin: 0 auto;
+    margin: 50px auto;
     max-width: 1200px;
   }
   table {
@@ -243,5 +253,26 @@
     th {
       font-size: 14px;
     }
+    .search__field {
+      display: block;
+      width: 100%;
+    }
+    .search__field input {
+      width: 90%;
+      margin: 0 auto;
+    }
+    #clean {
+      margin-top: 10px;
+      width: 50%;
+    }
+    #lastMonth {
+      font-size: 10px;
+    }
+  }
+  .clean__inputs {
+    text-align: center;
+  }
+  .search__field {
+    text-align: center;
   }
 </style>

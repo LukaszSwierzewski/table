@@ -6,7 +6,9 @@ import { sortTable } from "./components/sort.js";
 
 const DOM = {
   table: document.querySelector("#dataTable"),
-  btn: document.querySelector("#search"),
+  btnName: document.querySelector("#searchName"),
+  btnCity: document.querySelector("#searchCity"),
+  btnID: document.querySelector("#searchID"),
   btnClean: document.querySelector("#clean"),
   th: document.getElementsByTagName("th"),
   lastMonth: document.querySelector("#lastMonth"),
@@ -51,18 +53,20 @@ const getData = async () => {
 
 const cleanInput = () => {
   DOM.btnClean.addEventListener("click", () => {
-    let input = (document.getElementById("search").value = "");
+    let inputID = (document.getElementById("searchID").value = "");
+    let inputName = (document.getElementById("searchName").value = "");
+    let inputCity = (document.getElementById("searchCity").value = "");
     document.querySelectorAll("a").forEach((e) => {
       e.parentNode.classList.remove("active");
     });
-    search();
+    search("searchID", 0);
   });
 };
 
-const searchInit = () => {
-  DOM.btn.addEventListener("keyup", () => {
+const searchInit = (DOM, input, tr) => {
+  DOM.addEventListener("keyup", () => {
     if (event.keyCode === 13) {
-      search();
+      search(input, tr);
     }
   });
 };
@@ -80,7 +84,9 @@ function item(c) {
 const init = () => {
   getData();
   pagination();
-  searchInit();
+  searchInit(DOM.btnID, "searchID", 0);
+  searchInit(DOM.btnName, "searchName", 1);
+  searchInit(DOM.btnCity, "searchCity", 2);
   cleanInput();
   DOM.lastMonth.innerHTML = `Last month income (${prevMonth})`;
 };

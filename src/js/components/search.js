@@ -1,11 +1,11 @@
-function search() {
+function search(inputID, searchTable) {
   let input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("search");
+  input = document.getElementById(inputID);
   filter = input.value.toUpperCase();
   table = document.getElementById("dataTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
+    td = tr[i].getElementsByTagName("td")[searchTable];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
